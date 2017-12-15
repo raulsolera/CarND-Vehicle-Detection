@@ -17,7 +17,8 @@ The code for this project can found in the Ipython Notebook `Vehicle-detection-p
 [image3]: ./report-images/not-car-hog-features.png
 [image4]: ./report-images/color-space-hog-features.png
 [image5]: ./report-images/car-notcar-normalize-features.png
-[image6]: ./report-images/sliding-window.png
+[image61]: ./report-images/sliding-window1.png
+[image62]: ./report-images/sliding-window2.png
 [image7]: ./report-images/car-detection.png
 [image8]: ./report-images/detection-pipeline.png
 [image9]: ./report-images/pipeline-in-sequence.png
@@ -64,10 +65,14 @@ Classification was done in four steps:
 #### 1. Sliding window search implementation.
 
 The search space of the sliding window search was limited to the tranch between 400 and 656 pixel as it coveres all space where cars could be found.
-Again the issue here is the performance of the HOG function for feature extraction so I tried to use a single HOG transformation. This implied keeping to a single window size that after some tries was found optimal to be of size 96x96.
-The function used was that proposed by Udacity was used with minor changes to improve performance (ie. vectorizing the classification step instead of classifying each possible window).
-This, though simple, show to be robust enough to detect most cars. The following image shows the search space:
-![alt text][image6]
+Again the issue here is the performance of the HOG function for feature extraction so I tried to use a single HOG transformation. This implied keeping to a single window size that after some tries I found that this approach has a relevant issue as detection are limited to those cars in a certain distance. Finally I had to use two window sizes:
+- (96, 96) in the tranch between 400 and 656 pixels to detect more close cars
+![alt text][image61]
+- (64, 64) in the tranch between 400 and 528 pixels to detect farther cars.
+![alt text][image62]
+
+The function used was that proposed by Udacity was used with minor changes to improve performance (ie. vectorizing the classification step instead of classifying each possible window, allow limited search in horizontal direction).
+This, though simple, show to be robust enough to detect most cars. 
 
 #### 2. Examples of test images to show pipeline.
 
@@ -91,6 +96,11 @@ To improve filtering, the detection of some previous frames was used to add stre
 ![alt text][image9]
 
 Finally, to improve performance one every two images was processed through the detection pipeline and the detection used in the following frame. This improves processiong performances almost by a factor of 2 as the hog transformations showed to be the most time consuming process. 
+
+#### 2. Line finding combination.
+
+Once implemented the full vehicle detection pipeline, the funtionality of line detection from previous project was imported and combined in a single pipeline. The results can be seen in the following video:
+[link to combined pipelines video result](./combined_result.mp4)
 
 ---
 
