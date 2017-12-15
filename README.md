@@ -13,9 +13,9 @@ The code for this project can found in the Ipython Notebook `Vehicle-detection-p
 
 [//]: # (Image References)
 [image1]: ./report-images/car-notcar-example.png
-[image2]: ./report-images/car-hog-features.jpg
-[image3]: ./report-images/not-car-hog-features.jpg
-[image4]: ./report-images/color-space-hog-features.jpg
+[image2]: ./report-images/car-hog-features.png
+[image3]: ./report-images/not-car-hog-features.png
+[image4]: ./report-images/color-space-hog-features.png
 [image5]: ./report-images/car-notcar-normalize-features.png
 [image6]: ./report-images/sliding-window.png
 [image7]: ./report-images/car-detection.png
