@@ -41,12 +41,12 @@ Here is an example using the `RGB` color space and HOG parameters combinations o
 
 #### 2. Final choice for HOG parameters.
 
-Performance is the main issue when using the HOG function so I decided to keep a single channel transformation (instead of getting hog features for each channel which means x3 time consumption) and watching the images there was not much difference between channels in 'RGB' space that were also similar to channel 0 in 'YCrCb' space and the image of gray channel:
+Performance is the main issue when using the HOG function so I decided to keep a single channel transformation (instead of getting hog features for each channel which means x3 time consumption) and watching the images there was not much difference between channels in 'RGB' space that were also similar to channel 0 in 'YCrCb' space (the image of hog transformation for gray channel was also similar to that of 'RGB' and 0 channel):
 ![alt text][image4]
 
-On the other hand 'YCrCb' color space was found better option for color discrimination so this color space and channel 1 was used.
+On the other hand 'YCrCb' color space was found better option for color discrimination so this color space and channel 0 was used.
 
-Finally an orientation of 5 and cells per block of 4 was found to have a slightly better perfomance, however it showed worse performance in vehicle detection hence params 9 (8, 8) and (2, 2) were used for feature extraction and trining classifier.
+Finally an orientation of 5 and cells per block of 4 was found to have a slightly better perfomance with respecto to time, however it showed worse performance in vehicle detection hence parameters: `orientation=9`, `pix_per_cell=(8, 8)` and `cell_per_block=(2, 2)` were used for feature extraction and trining classifier.
 
 #### 3. Classifier training.
 
